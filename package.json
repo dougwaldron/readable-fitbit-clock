@@ -1,0 +1,31 @@
+{
+  "devDependencies": {
+    "@fitbit/sdk": "^4.2.1",
+    "@fitbit/sdk-cli": "^1.7.3"
+  },
+  "fitbit": {
+    "appUUID": "72882fa2-6aba-4a59-aee7-993dcb7e616d",
+    "appType": "clockface",
+    "appDisplayName": "Readable Clock",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "",
+    "requestedPermissions": [
+      "access_activity"
+    ],
+    "buildTargets": [
+      "meson",
+      "mira",
+      "higgs",
+      "gemini"
+    ],
+    "i18n": {
+      "en-US": {
+        "name": "Readable Clock"
+      }
+    },
+    "defaultLanguage": "en-US"
+  },
+  "scripts": {
+    "build": "fitbit-build"
+  }
+}

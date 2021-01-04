@@ -1,0 +1,100 @@
+#root {
+  font-family: System-Light;
+  viewport-fill: fb-black;
+  fill: fb-white;
+}
+
+arc {
+  width: 60;
+  height: 60;
+  y: 0;
+  x: 0;
+  arc-width: 4;
+  start-angle: 0;
+  sweep-angle: 0;
+}
+
+.primaryGoal arc {
+  width: 80;
+  height: 80;
+  arc-width: 6;
+}
+
+arc.background {
+  fill: fb-extra-dark-gray;
+  sweep-angle: 360;
+}
+
+.icon {
+  width: 32;
+  height: 32;
+  y: 14;
+  x: 14;
+}
+
+.primaryGoal .icon {
+  width: 48;
+  height: 48;
+  y: 16;
+  x: 16;
+}
+
+.value {
+  font-size: 60;
+  text-length: 9;
+  y: 57;
+  x: 90;
+}
+
+#date {
+  font-size: 50;
+  text-length: 11;
+  y: 40;
+  x: 150;
+  width: 100%;
+  fill: #74bcd4;
+  fill: fb-cyan;
+  text-anchor: middle;
+  display-align: center;
+}
+
+#time {
+  font-size: 79;
+  text-length: 8;
+  y: 120;
+  x: 150;
+  width: 100%;
+  text-anchor: middle;
+  display-align: center;
+}
+
+#steps {
+  y: 142;
+  x: 0;
+  width: 100%;
+  fill: fb-peach;
+}
+
+#elevationGain {
+  y: 240;
+  x: 0;
+  fill: yellowgreen;
+}
+
+#distance {
+  y: 240;
+  x: 80;
+  fill: cornflowerblue;
+}
+
+#calories {
+  y: 240;
+  x: 160;
+  fill: coral;
+}
+
+#activeZoneMinutes {
+  y: 240;
+  x: 240;
+  fill: bisque;
+}
