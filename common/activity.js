@@ -25,18 +25,15 @@ function drawActivity(activityType) {
   }
 
   const el = document.getElementById(activityType);
-  const progressArc = el.getElementsByClassName("progress")[0];
-  const iconMet = el.getElementsByClassName("met")[0];
-  const iconNotMet = el.getElementsByClassName("not-met")[0];
+  const progressEl = el.getElementsByClassName("progress")[0];
+  const completedEl = el.getElementsByClassName("completed")[0];
 
   if (actual >= goal) {
-    iconMet.style.display = "inline";
-    iconNotMet.style.display = "none";
-    progressArc.sweepAngle = 360;
+    completedEl.style.display = "inline";
+    progressEl.sweepAngle = 360;
   } else {
-    iconMet.style.display = "none";
-    iconNotMet.style.display = "inline";
-    progressArc.sweepAngle = 360 * (actual / goal);
+    completedEl.style.display = "none";
+    progressEl.sweepAngle = 360 * (actual / goal);
   }
 
   const valueEl = el.getElementsByClassName("value")[0];

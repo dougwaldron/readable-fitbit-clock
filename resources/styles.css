@@ -25,11 +25,24 @@ arc.background {
   sweep-angle: 360;
 }
 
+.completed {
+  r: 30;
+  cy: 30;
+  cx: 30;
+}
+
+.primaryGoal .completed {
+  r: 40;
+  cy: 40;
+  cx: 40;
+}
+
 .icon {
   width: 32;
   height: 32;
   y: 14;
   x: 14;
+  fill: fb-white;
 }
 
 .primaryGoal .icon {
@@ -40,7 +53,7 @@ arc.background {
 }
 
 .value {
-  font-size: 60;
+  font-size: 65;
   text-length: 9;
   y: 57;
   x: 90;
@@ -73,28 +86,33 @@ arc.background {
   x: 0;
   width: 100%;
   fill: fb-peach;
+  fill: fb-blue;
 }
 
 #elevationGain {
   y: 240;
   x: 0;
   fill: yellowgreen;
+  fill: fb-purple;
 }
 
 #distance {
   y: 240;
   x: 80;
   fill: cornflowerblue;
+  fill: fb-red;
 }
 
 #calories {
   y: 240;
   x: 160;
   fill: coral;
+  fill: fb-orange;
 }
 
 #activeZoneMinutes {
   y: 240;
   x: 240;
   fill: bisque;
+  fill: fb-green;
 }
