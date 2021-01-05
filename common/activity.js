@@ -40,6 +40,11 @@ function drawActivity(activityType) {
 
   if (valueEl !== undefined) {
     valueEl.text = formatNumber(actual);
+
+    if (actual > 99999) {
+      valueEl.style.fontSize = 60;
+      valueEl.x = 90;
+    }
   }
 
   // console.log(

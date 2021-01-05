@@ -1,5 +1,5 @@
 #root {
-  font-family: System-Light;
+  font-family: System-Regular;
   viewport-fill: fb-black;
   fill: fb-white;
 }
@@ -9,7 +9,7 @@ arc {
   height: 60;
   y: 0;
   x: 0;
-  arc-width: 4;
+  arc-width: 6;
   start-angle: 0;
   sweep-angle: 0;
 }
@@ -46,33 +46,33 @@ arc.background {
 }
 
 .primaryGoal .icon {
-  width: 48;
-  height: 48;
-  y: 16;
-  x: 16;
+  width: 44;
+  height: 44;
+  y: 18;
+  x: 18;
 }
 
 .value {
-  font-size: 65;
+  font-size: 70;
   text-length: 9;
-  y: 57;
-  x: 90;
+  y: 62;
+  x: 92;
+  fill: fb-cyan;
 }
 
 #date {
-  font-size: 50;
+  font-size: 52;
   text-length: 11;
   y: 40;
   x: 150;
   width: 100%;
-  fill: #74bcd4;
-  fill: fb-cyan;
+  fill: #bbbbbb;
   text-anchor: middle;
   display-align: center;
 }
 
 #time {
-  font-size: 79;
+  font-size: 76;
   text-length: 8;
   y: 120;
   x: 150;
@@ -90,28 +90,28 @@ arc.background {
 }
 
 #elevationGain {
-  y: 240;
+  y: 239;
   x: 0;
   fill: yellowgreen;
   fill: fb-purple;
 }
 
 #distance {
-  y: 240;
+  y: 239;
   x: 80;
   fill: cornflowerblue;
   fill: fb-red;
 }
 
 #calories {
-  y: 240;
+  y: 239;
   x: 160;
   fill: coral;
   fill: fb-orange;
 }
 
 #activeZoneMinutes {
-  y: 240;
+  y: 239;
   x: 240;
   fill: bisque;
   fill: fb-green;

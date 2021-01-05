@@ -9,21 +9,21 @@ function zeroPad(i) {
 }
 
 const months = [
-  "JAN",
-  "FEB",
-  "MAR",
-  "APR",
-  "MAY",
-  "JUN",
-  "JUL",
-  "AUG",
-  "SEP",
-  "OCT",
-  "NOV",
-  "DEC",
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
 ];
 
-const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const timeLabel = document.getElementById("time");
 const dateLabel = document.getElementById("date");
@@ -40,7 +40,7 @@ export function drawTime(now) {
   let mins = zeroPad(now.getMinutes());
 
   if (preferences.clockDisplay === "12h") {
-    amPm = hours < 12 ? " AM" : " PM";
+    amPm = hours < 12 ? " am" : " pm";
     hours = hours % 12 || 12;
   } else {
     hours = zeroPad(hours);
