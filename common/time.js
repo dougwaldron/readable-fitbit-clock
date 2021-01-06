@@ -40,7 +40,7 @@ export function drawTime(now) {
   let mins = zeroPad(now.getMinutes());
 
   if (preferences.clockDisplay === "12h") {
-    amPm = hours < 12 ? " am" : " pm";
+    amPm = hours < 12 ? "am" : "pm";
     hours = hours % 12 || 12;
   } else {
     hours = zeroPad(hours);

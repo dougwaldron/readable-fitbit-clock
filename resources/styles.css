@@ -21,7 +21,7 @@ arc {
 }
 
 arc.background {
-  fill: fb-extra-dark-gray;
+  fill: fb-dark-gray;
   sweep-angle: 360;
 }
 
@@ -61,6 +61,7 @@ arc.background {
 }
 
 #date {
+  font-family: System-Light;
   font-size: 52;
   text-length: 11;
   y: 40;
@@ -68,7 +69,6 @@ arc.background {
   width: 100%;
   fill: #bbbbbb;
   text-anchor: middle;
-  display-align: center;
 }
 
 #time {
@@ -78,7 +78,6 @@ arc.background {
   x: 150;
   width: 100%;
   text-anchor: middle;
-  display-align: center;
 }
 
 #steps {
