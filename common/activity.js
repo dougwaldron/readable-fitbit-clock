@@ -2,6 +2,7 @@ import document from "document";
 import { me as appbit } from "appbit";
 import { today } from "user-activity";
 import { goals } from "user-activity";
+import { primaryGoal } from "user-activity";
 
 function formatNumber(num) {
   return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
@@ -15,7 +16,7 @@ let activityTypes = [
   "activeZoneMinutes",
 ];
 
-function drawActivity(activityType) {
+function drawActivity(el, activityType) {
   let actual = today.adjusted[activityType] || 0;
   let goal = goals[activityType] || 1;
 
@@ -24,7 +25,6 @@ function drawActivity(activityType) {
     goal = goals[activityType].total || 1;
   }
 
-  const el = document.getElementById(activityType);
   const progressEl = el.getElementsByClassName("progress")[0];
   const completedEl = el.getElementsByClassName("completed")[0];
 
@@ -46,16 +46,40 @@ function drawActivity(activityType) {
       valueEl.x = 90;
     }
   }
+}
 
-  // console.log(
-  //   `${activityType}: ${actual} / ${goal} = ${progressArc.sweepAngle}`
-  // );
+function drawPrimaryGoal() {
+  const el = document.getElementById("primaryGoal");
+  el.class = primaryGoal;
+
+  const iconEl = el.getElementsByClassName("icon")[0];
+  iconEl.href = `icons/${primaryGoal}_48.png`;
+
+  drawActivity(el, primaryGoal);
+}
+
+function drawOtherActivities() {
+  let posX = 0;
+
+  for (var i = 0; i < activityTypes.length; i++) {
+    const activityType = activityTypes[i];
+    const el = document
+      .getElementById("activities")
+      .getElementsByClassName(activityType)[0];
+
+    if (activityType == primaryGoal) {
+      el.style.display = "none";
+    } else {
+      el.x = posX;
+      posX += 80;
+      drawActivity(el, activityType);
+    }
+  }
 }
 
 export function drawAllActivities() {
   if (appbit.permissions.granted("access_activity")) {
-    for (var i = 0; i < activityTypes.length; i++) {
-      drawActivity(activityTypes[i]);
-    }
+    drawPrimaryGoal();
+    drawOtherActivities();
   }
 }

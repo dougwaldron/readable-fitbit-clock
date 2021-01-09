@@ -4,62 +4,6 @@
   fill: fb-white;
 }
 
-arc {
-  width: 60;
-  height: 60;
-  y: 0;
-  x: 0;
-  arc-width: 6;
-  start-angle: 0;
-  sweep-angle: 0;
-}
-
-.primaryGoal arc {
-  width: 80;
-  height: 80;
-  arc-width: 6;
-}
-
-arc.background {
-  fill: fb-dark-gray;
-  sweep-angle: 360;
-}
-
-.completed {
-  r: 30;
-  cy: 30;
-  cx: 30;
-}
-
-.primaryGoal .completed {
-  r: 40;
-  cy: 40;
-  cx: 40;
-}
-
-.icon {
-  width: 32;
-  height: 32;
-  y: 14;
-  x: 14;
-  fill: fb-white;
-}
-
-.primaryGoal .icon {
-  width: 44;
-  height: 44;
-  y: 18;
-  x: 18;
-}
-
-.value {
-  font-size: 70;
-  text-length: 9;
-  y: 62;
-  x: 92;
-  fill: fb-cyan;
-}
-
 #date {
   font-family: System-Light;
   font-size: 52;
@@ -80,38 +24,90 @@ arc.background {
   text-anchor: middle;
 }
 
-#steps {
+#primaryGoal {
   y: 142;
   x: 0;
   width: 100%;
-  fill: fb-peach;
+}
+
+arc {
+  width: 60;
+  height: 60;
+  y: 0;
+  x: 0;
+  arc-width: 6;
+  start-angle: 0;
+  sweep-angle: 0;
+}
+
+#primaryGoal arc {
+  width: 80;
+  height: 80;
+  arc-width: 6;
+}
+
+arc.background {
+  fill: fb-dark-gray;
+  sweep-angle: 360;
+}
+
+.completed {
+  r: 30;
+  cy: 30;
+  cx: 30;
+}
+
+#primaryGoal .completed {
+  r: 40;
+  cy: 40;
+  cx: 40;
+}
+
+.icon {
+  width: 32;
+  height: 32;
+  y: 14;
+  x: 14;
+  fill: fb-white;
+}
+
+#primaryGoal .icon {
+  width: 44;
+  height: 44;
+  y: 18;
+  x: 18;
+}
+
+.value {
+  font-size: 70;
+  text-length: 9;
+  y: 62;
+  x: 92;
+  fill: fb-cyan;
+}
+
+.steps {
   fill: fb-blue;
 }
 
-#elevationGain {
-  y: 239;
-  x: 0;
-  fill: yellowgreen;
+.elevationGain {
   fill: fb-purple;
 }
 
-#distance {
-  y: 239;
-  x: 80;
-  fill: cornflowerblue;
+.distance {
   fill: fb-red;
 }
 
-#calories {
-  y: 239;
-  x: 160;
-  fill: coral;
+.calories {
   fill: fb-orange;
 }
 
-#activeZoneMinutes {
-  y: 239;
-  x: 240;
-  fill: bisque;
+.activeZoneMinutes {
   fill: fb-green;
+}
+
+#activities {
+  y: 239;
+  x: 0;
+  width: 100%;
 }
