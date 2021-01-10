@@ -1,4 +1,13 @@
 {
+  "name": "readable-clock",
+  "version": "1.0.0",
+  "description": "Readable Fitbit Clock",
+  "author": "Douglas Waldron",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "github:dougwaldron/readable-fitbit-clock"
+  },
   "devDependencies": {
     "@fitbit/sdk": "^4.2.1",
     "@fitbit/sdk-cli": "^1.7.3"
