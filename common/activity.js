@@ -1,5 +1,4 @@
 import document from "document";
-import { me as appbit } from "appbit";
 import { today } from "user-activity";
 import { goals } from "user-activity";
 import { primaryGoal } from "user-activity";
@@ -7,6 +6,8 @@ import { primaryGoal } from "user-activity";
 function formatNumber(num) {
   return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 }
+
+let activitySpacing = 80;
 
 let activityTypes = [
   "steps",
@@ -16,6 +17,12 @@ let activityTypes = [
   "activeZoneMinutes",
 ];
 
+if (today.local.elevationGain === undefined) {
+  activityTypes = ["steps", "distance", "calories", "activeZoneMinutes"];
+  document.getElementsByClassName("elevationGain")[0].style.display = "none";
+  activitySpacing = 120;
+}
+
 const primaryGoalIndex = (function () {
   for (var i = 0; i < activityTypes.length; i++) {
     if (primaryGoal == activityTypes[i]) {
@@ -24,7 +31,7 @@ const primaryGoalIndex = (function () {
   }
 })();
 
-let currentGoalIndex = primaryGoalIndex;
+let currentActivityIndex = primaryGoalIndex;
 
 function drawActivity(el, activityType) {
   let actual = today.adjusted[activityType] || 0;
@@ -58,49 +65,50 @@ function drawActivity(el, activityType) {
   }
 }
 
-function drawPrimaryGoal() {
-  let goal = activityTypes[currentGoalIndex];
+function drawPrimaryActivity() {
+  let primaryActivity = activityTypes[currentActivityIndex];
 
-  const el = document.getElementById("primaryGoal");
-  el.class = goal;
+  const el = document.getElementById("primaryActivity");
+  el.class = primaryActivity;
 
   const iconEl = el.getElementsByClassName("icon")[0];
-  iconEl.href = `icons/${goal}_48.png`;
+  iconEl.href = `icons/${primaryActivity}_48.png`;
 
-  drawActivity(el, goal);
+  drawActivity(el, primaryActivity);
 }
 
 function drawOtherActivities() {
   let posX = 0;
 
   for (var i = 0; i < activityTypes.length; i++) {
-    const activityType = activityTypes[i];
+    const ind = (i + currentActivityIndex) % activityTypes.length;
+    const activityType = activityTypes[ind];
+
     const el = document
       .getElementById("activities")
       .getElementsByClassName(activityType)[0];
 
-    if (activityType == primaryGoal) {
+    if (activityType == activityTypes[currentActivityIndex]) {
       el.style.display = "none";
     } else {
+      el.style.display = "inline";
       el.x = posX;
-      posX += 80;
+      posX += activitySpacing;
       drawActivity(el, activityType);
     }
   }
 }
 
 export function drawAllActivities() {
-  if (appbit.permissions.granted("access_activity")) {
-    drawPrimaryGoal();
-    drawOtherActivities();
-  }
+  drawPrimaryActivity();
+  drawOtherActivities();
 }
 
 export function resetGoalIndex() {
-  currentGoalIndex = primaryGoalIndex;
+  currentActivityIndex = primaryGoalIndex;
 }
 
 export function cycleGoalIndex() {
-  currentGoalIndex = (currentGoalIndex + 1) % activityTypes.length;
-  drawPrimaryGoal();
+  currentActivityIndex = (currentActivityIndex + 1) % activityTypes.length;
+  drawAllActivities();
 }

@@ -1,7 +1,7 @@
 <svg id="root">
   <text id="date" />
   <text id="time" />
-  <svg id="primaryGoal" pointer-events="visible">
+  <svg id="primaryActivity" pointer-events="visible">
     <arc class="background" />
     <arc class="progress" />
     <circle class="completed" />

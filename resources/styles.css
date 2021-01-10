@@ -24,7 +24,7 @@
   text-anchor: middle;
 }
 
-#primaryGoal {
+#primaryActivity {
   y: 142;
   x: 0;
   width: 100%;
@@ -40,7 +40,7 @@ arc {
   sweep-angle: 0;
 }
 
-#primaryGoal arc {
+#primaryActivity arc {
   width: 80;
   height: 80;
   arc-width: 6;
@@ -57,7 +57,7 @@ arc.background {
   cx: 30;
 }
 
-#primaryGoal .completed {
+#primaryActivity .completed {
   r: 40;
   cy: 40;
   cx: 40;
@@ -71,7 +71,7 @@ arc.background {
   fill: fb-white;
 }
 
-#primaryGoal .icon {
+#primaryActivity .icon {
   width: 44;
   height: 44;
   y: 18;
