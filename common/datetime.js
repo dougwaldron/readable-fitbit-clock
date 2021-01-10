@@ -24,20 +24,19 @@ const months = [
 ];
 
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
 const timeLabel = document.getElementById("time");
 const dateLabel = document.getElementById("date");
 
-export function drawDate(now) {
-  dateLabel.text = `${days[now.getDay()]}, ${
-    months[now.getMonth()]
-  } ${now.getDate()}`;
+function drawDate(date) {
+  dateLabel.text = `${days[date.getDay()]}, ${
+    months[date.getMonth()]
+  } ${date.getDate()}`;
 }
 
-export function drawTime(now) {
-  let hours = now.getHours();
+function drawTime(date) {
+  let hours = date.getHours();
   let amPm = "";
-  let mins = zeroPad(now.getMinutes());
+  let mins = zeroPad(date.getMinutes());
 
   if (preferences.clockDisplay === "12h") {
     amPm = hours < 12 ? "am" : "pm";
@@ -47,4 +46,9 @@ export function drawTime(now) {
   }
 
   timeLabel.text = `${hours}:${mins}${amPm}`;
+}
+
+export function drawDateTime(date) {
+  drawTime(date);
+  drawDate(date);
 }
