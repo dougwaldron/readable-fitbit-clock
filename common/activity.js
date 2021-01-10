@@ -16,6 +16,16 @@ let activityTypes = [
   "activeZoneMinutes",
 ];
 
+const primaryGoalIndex = (function () {
+  for (var i = 0; i < activityTypes.length; i++) {
+    if (primaryGoal == activityTypes[i]) {
+      return i;
+    }
+  }
+})();
+
+let currentGoalIndex = primaryGoalIndex;
+
 function drawActivity(el, activityType) {
   let actual = today.adjusted[activityType] || 0;
   let goal = goals[activityType] || 1;
@@ -49,13 +59,15 @@ function drawActivity(el, activityType) {
 }
 
 function drawPrimaryGoal() {
+  let goal = activityTypes[currentGoalIndex];
+
   const el = document.getElementById("primaryGoal");
-  el.class = primaryGoal;
+  el.class = goal;
 
   const iconEl = el.getElementsByClassName("icon")[0];
-  iconEl.href = `icons/${primaryGoal}_48.png`;
+  iconEl.href = `icons/${goal}_48.png`;
 
-  drawActivity(el, primaryGoal);
+  drawActivity(el, goal);
 }
 
 function drawOtherActivities() {
@@ -82,4 +94,13 @@ export function drawAllActivities() {
     drawPrimaryGoal();
     drawOtherActivities();
   }
+}
+
+export function resetGoalIndex() {
+  currentGoalIndex = primaryGoalIndex;
+}
+
+export function cycleGoalIndex() {
+  currentGoalIndex = (currentGoalIndex + 1) % activityTypes.length;
+  drawPrimaryGoal();
 }
