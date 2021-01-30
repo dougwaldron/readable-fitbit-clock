@@ -12,11 +12,9 @@ if (appbit.permissions.granted("access_activity")) {
     }
   };
 
-  document
-    .getElementById("primaryActivity")
-    .addEventListener("click", (evt) => {
-      activity.cycleGoalIndex();
-    });
+  document.getElementById("root").addEventListener("click", (evt) => {
+    activity.cycleGoalIndex();
+  });
 }
 
 clock.granularity = "minutes";

@@ -1,7 +1,7 @@
-<svg id="root">
+<svg id="root" pointer-events="visible">
   <text id="date" />
   <text id="time" />
-  <svg id="primaryActivity" pointer-events="visible">
+  <svg id="primaryActivity">
     <arc class="background" />
     <arc class="progress" />
     <circle class="completed" />
