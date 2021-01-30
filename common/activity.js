@@ -43,11 +43,11 @@ function drawActivity(el, activityType) {
     goal = goals[activityType].total || 1;
   } else if (activityType == "distance") {
     if (units.distance == "metric") {
-      actual = (actual / 1000).toPrecision(4); // meters to kilometers
-      goal = (goal / 1000).toPrecision(4); // meters to kilometers
+      actual = (actual / 1000).toPrecision(3); // meters to kilometers
+      goal = (goal / 1000).toPrecision(3); // meters to kilometers
     } else {
-      actual = (actual / 1609.344).toPrecision(4); // meters to miles
-      goal = (goal / 1609.344).toPrecision(4); // meters to miles
+      actual = (actual / 1609.344).toPrecision(3); // meters to miles
+      goal = (goal / 1609.344).toPrecision(3); // meters to miles
     }
   }
 
