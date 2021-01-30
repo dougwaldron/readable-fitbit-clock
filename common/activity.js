@@ -2,6 +2,7 @@ import document from "document";
 import { today } from "user-activity";
 import { goals } from "user-activity";
 import { primaryGoal } from "user-activity";
+import { units } from "user-settings";
 
 function formatNumber(num) {
   return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
@@ -40,6 +41,14 @@ function drawActivity(el, activityType) {
   if (activityType == "activeZoneMinutes") {
     actual = today.adjusted[activityType].total || 0;
     goal = goals[activityType].total || 1;
+  } else if (activityType == "distance") {
+    if (units.distance == "metric") {
+      actual = (actual / 1000).toPrecision(4); // meters to kilometers
+      goal = (goal / 1000).toPrecision(4); // meters to kilometers
+    } else {
+      actual = (actual / 1609.344).toPrecision(4); // meters to miles
+      goal = (goal / 1609.344).toPrecision(4); // meters to miles
+    }
   }
 
   const progressEl = el.getElementsByClassName("progress")[0];
