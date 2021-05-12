@@ -31,10 +31,10 @@
 }
 
 arc {
-  width: 60;
-  height: 60;
-  y: 0;
-  x: 0;
+  width: 56;
+  height: 56;
+  y: 2;
+  x: 2;
   arc-width: 6;
   start-angle: 0;
   sweep-angle: 0;
@@ -52,9 +52,11 @@ arc.background {
 }
 
 .completed {
-  r: 30;
-  cy: 30;
-  cx: 30;
+  r: 28;
+  cy: 28;
+  cx: 28;
+  x: 2;
+  y: 2;
 }
 
 #primaryActivity .completed {
@@ -79,11 +81,17 @@ arc.background {
 }
 
 .value {
-  font-size: 70;
+  font-size: 50;
   text-length: 9;
+  y: 45;
+  x: 70;
+  fill: fb-cyan;
+}
+
+#primaryActivity .value {
+  font-size: 70;
   y: 62;
   x: 92;
-  fill: fb-cyan;
 }
 
 .steps {
@@ -110,4 +118,30 @@ arc.background {
   y: 239;
   x: 0;
   width: 100%;
+}
+
+#activities .value {
+  display: none;
+}
+
+/* Displaying secondary clock face */
+
+.secondaryClockFace #date {
+  display: none;
+}
+
+.secondaryClockFace #time {
+  display: none;
+}
+
+.secondaryClockFace #primaryActivity {
+  display: none;
+}
+
+.secondaryClockFace #activities {
+  y: 0;
+}
+
+.secondaryClockFace #activities .value {
+  display: inline;
 }

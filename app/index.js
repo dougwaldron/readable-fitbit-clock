@@ -7,22 +7,20 @@ import * as activity from "../common/activity";
 
 if (appbit.permissions.granted("access_activity")) {
   display.onchange = function () {
-    if (!display.on) {
-      activity.resetGoalIndex();
-    }
+    if (!display.on) activity.resetClockFace();
   };
 
-  document.getElementById("root").addEventListener("click", (evt) => {
-    activity.cycleGoalIndex();
+  document.getElementById("touch").addEventListener("click", () => {
+    activity.toggleClockFace();
   });
 }
 
 clock.granularity = "minutes";
 
-clock.ontick = (evt) => {
-  datetime.drawDateTime(evt.date);
-
+clock.ontick = () => {
   if (appbit.permissions.granted("access_activity")) {
-    activity.drawAllActivities();
+    activity.drawClockFace();
+  } else {
+    datetime.drawDateTime();
   }
 };

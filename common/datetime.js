@@ -27,13 +27,15 @@ const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const timeLabel = document.getElementById("time");
 const dateLabel = document.getElementById("date");
 
-function drawDate(date) {
+export function drawDateTime() {
+  let date = new Date();
+
+  // Draw date
   dateLabel.text = `${days[date.getDay()]}, ${
     months[date.getMonth()]
   } ${date.getDate()}`;
-}
 
-function drawTime(date) {
+  // Draw time
   let hours = date.getHours();
   let amPm = "";
   let mins = zeroPad(date.getMinutes());
@@ -46,9 +48,4 @@ function drawTime(date) {
   }
 
   timeLabel.text = `${hours}:${mins}${amPm}`;
-}
-
-export function drawDateTime(date) {
-  drawTime(date);
-  drawDate(date);
 }
