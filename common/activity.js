@@ -7,9 +7,8 @@ import * as datetime from "../common/datetime";
 
 function formatNumber(num) {
   if (num < 0.01) return "0";
-  if (num < 0.1) return num.toPrecision(1);
   if (num < 1) return num.toPrecision(2);
-  if (num < 1000) return num;
+  if (num < 1000) return num.toString();
   return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 }
 
@@ -41,9 +40,10 @@ const primaryGoalIndex = (function () {
 
 let showPrimaryClockFace = true;
 
-function drawActivity(el, activityType) {
+function drawActivity(el, activityType, showValue) {
   let actual = today.adjusted[activityType] || 0;
   let goal = goals[activityType] || 1;
+  let distanceUnits = "";
 
   if (activityType == "activeZoneMinutes") {
     actual = today.adjusted[activityType].total || 0;
@@ -52,9 +52,11 @@ function drawActivity(el, activityType) {
     if (units.distance == "metric") {
       actual = (actual / 1000).toPrecision(3); // meters to kilometers
       goal = (goal / 1000).toPrecision(3); // meters to kilometers
+      distanceUnits = " km";
     } else {
       actual = (actual / 1609.344).toPrecision(3); // meters to miles
       goal = (goal / 1609.344).toPrecision(3); // meters to miles
+      distanceUnits = " mi";
     }
   }
 
@@ -69,14 +71,20 @@ function drawActivity(el, activityType) {
     progressEl.sweepAngle = 360 * (actual / goal);
   }
 
-  const valueEl = el.getElementsByClassName("value")[0];
+  if (showValue) {
+    const valueEl = el.getElementsByClassName("value")[0];
 
-  if (valueEl !== undefined) {
-    valueEl.text = formatNumber(actual);
+    if (valueEl !== undefined) {
+      valueEl.text = `${formatNumber(actual)}${distanceUnits}`;
 
-    if (actual > 99999) {
-      valueEl.style.fontSize = 60;
-      valueEl.x = 90;
+      if (actual > 99999) {
+        valueEl.style.fontSize = 60;
+        valueEl.x = 90;
+      }
+
+      if (activityType == "distance") {
+        valueEl.style.fontSize = 60;
+      }
     }
   }
 }
@@ -96,7 +104,7 @@ function drawPrimaryClockFace() {
   const iconEl = el.getElementsByClassName("icon")[0];
   iconEl.href = `icons/${primaryActivity}_48.png`;
 
-  drawActivity(el, primaryActivity);
+  drawActivity(el, primaryActivity, true);
 
   // Draw other activities horizontally across bottom
   let posX = 0;
@@ -116,7 +124,7 @@ function drawPrimaryClockFace() {
       el.x = posX;
       el.y = 0;
       posX += activitySpacingHorizontal;
-      drawActivity(el, activityType);
+      drawActivity(el, activityType, false);
     }
   }
 }
@@ -139,7 +147,7 @@ function drawSecondaryClockFace() {
     el.x = 0;
     el.y = posY;
     posY += activitySpacingVertical;
-    drawActivity(el, activityType);
+    drawActivity(el, activityType, true);
   }
 }
 

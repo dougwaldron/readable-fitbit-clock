@@ -22,7 +22,7 @@ Install it on the [Fitbit Gallery](https://gallery.fitbit.com/details/72882fa2-6
 
 ## Updates
 
-- **11-May-2021**
+- **13-May-2021**
     - Instead of cycling through each activity one at a time, tapping the screen now toggles to a screen showing the progress of all activities
 
 - **30-Jan-2021**
